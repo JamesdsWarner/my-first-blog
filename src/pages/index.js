@@ -5,7 +5,12 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+import CMS from "netlify-cms-app"
+
 const BlogIndex = ({ data, location }) => {
+  CMS.init()
+
+  CMS.registerPreviewTemplate("my-template", MyTemplate)
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 

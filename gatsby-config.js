@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
+    { resolve: "gatsby-plugin-netlify-cms" },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
