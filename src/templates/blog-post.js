@@ -8,6 +8,7 @@ import Seo from "../components/seo"
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
+  console.log(post.frontmatter)
   const { previous, next } = data
 
   return (
@@ -25,6 +26,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
+        <img src={post.frontmatter.thumbnail} alt="blog post" />
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
@@ -85,6 +87,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        thumbnail
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
